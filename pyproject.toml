@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "django course"
+version = "0.1.0"
+description = "learn django"
+authors = ["van.duong"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+djangorestframework = ">=3.12.4,<3.13"
+django = ">=3.2.4,<3.3"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = ">=3.9.2,<3.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
