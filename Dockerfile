@@ -1,5 +1,5 @@
 FROM python:3.10-slim as builder
-ARG ENV=DEV
+ARG ENV=PROD
 RUN pip install poetry
 COPY ./pyproject.toml /tmp/pyproject.toml
 RUN cd /tmp && \
