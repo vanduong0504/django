@@ -1,0 +1,22 @@
+---
+name: Checks on different system
+on: [push]
+
+jobs:
+    Run-on-ubuntu:
+        name: Test and Lint Ubuntu
+        runs-on: ubuntu-latest
+        steps:
+            - name: Login docker hub
+              uses: docker/login-action@v3
+              with:
+                username: ${{ secrets.DOCKER_USER }}
+                password: ${{ secrets.DOCKER_TOKEN }}
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                sparse-checkout: .
+            - name: Test
+              run: docker-compose run --rm  backend sh  -c "python manage.py test"
+            - name: Format
+              run: docker-compose run --rm  backend sh  -c "black ." 
