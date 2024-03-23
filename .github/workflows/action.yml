@@ -14,8 +14,6 @@ jobs:
                 password: ${{ secrets.DOCKER_TOKEN }}
             - name: Checkout
               uses: actions/checkout@v4
-              with:
-                sparse-checkout: .
             - name: Build
               run: docker build -t django .
             - name: Test
