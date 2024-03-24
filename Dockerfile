@@ -1,6 +1,7 @@
-FROM python:3.10-slim as builder
+FROM python:3.10-alpine as builder
 ARG ENV=PROD
-RUN pip install poetry
+RUN apk add gcc musl-dev libffi-dev libpq-dev && \
+    pip install poetry
 COPY ./pyproject.toml /tmp/pyproject.toml
 RUN cd /tmp && \
     poetry export --output /tmp/prod-requirements.txt && \
