@@ -6,7 +6,13 @@ services:
       dockerfile: ./Dockerfile
       args:
         - ENV=DEV
-    command: ["python", "-B", "manage.py", "runserver", "0.0.0.0:8000"]
+    command:
+    - "sh"
+    - "-c"
+    - |
+      python -B manage.py wait_for_db &&
+      python -B manage.py migrate --database=postgresql &&
+      python -B manage.py runserver 0.0.0.0:8000
     ports:
       - 8080:8000
     volumes:
