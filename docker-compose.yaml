@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile
       args:
         - ENV=DEV
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["python", "-B", "manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - 8080:8000
     volumes:
